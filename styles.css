@@ -1,0 +1,87 @@
+@charset "UTF-8";
+/* Intro to CSS 3D transforms */
+/* Perspective */
+/* To activate 3D space, an element needs perspective. This can be applied in two ways. 
+
+1) The first technique is with the transform property, with perspective() as a function: */
+.scene {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #CCC;
+  margin: 40px;
+}
+
+.panel {
+  width: 100%;
+  height: 100%;
+  background: red;
+  /* perspective function in transform property */
+  -webkit-transform: perspective(600px) rotateY(45deg);
+          transform: perspective(600px) rotateY(45deg);
+}
+
+/* 2) The second technique is with the perspective property: */
+.scene2 {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #CCC;
+  margin: 40px;
+  /* perspective property */
+  -webkit-perspective: 600px;
+          perspective: 600px;
+}
+
+.panel2 {
+  width: 100%;
+  height: 100%;
+  background: blue;
+  -webkit-transform: rotateY(45deg);
+          transform: rotateY(45deg);
+}
+
+/* These two formats both trigger a 3D space and can produce the same visual result. But there is a difference. The functional notation is convenient for directly applying a 3D transform on a single element (in the red example, I use it in conjunction with a rotateY transform). In this way, it is used as a shorthand to transform a single element in 3D. */
+/* But when used on multiple elements, the effect breaks. The transformed elements don’t line up together. This is because each element has its own perspective, its own vanishing point. To remedy this, use the perspective property on a parent element, so each child may share the same 3D space. */
+/* When have multiple elements - perspective() as a function */
+.scene3 {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #CCC;
+  margin: 40px;
+}
+
+.panel3 {
+  width: 55px;
+  height: 55px;
+  float: left;
+  margin: 5px;
+  background: red;
+  -webkit-transform: perspective(400px) rotateY(45deg);
+          transform: perspective(400px) rotateY(45deg);
+}
+
+/* When have multiple elements - with the perspective property */
+.scene4 {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #CCC;
+  margin: 40px;
+  -webkit-perspective: 400px;
+          perspective: 400px;
+}
+
+.panel4 {
+  width: 55px;
+  height: 55px;
+  float: left;
+  margin: 5px;
+  background: blue;
+  -webkit-transform: rotateY(45deg);
+          transform: rotateY(45deg);
+}
+
+/* The value of perspective determines the intensity of the 3D effect. Think of it as a distance from the viewer to the object. The greater the value, the further the distance, the less intense the visual effect. perspective: 2000px yields a subtle 3D effect, as if we are viewing an object from far away through binoculars. perspective: 100px produces a tremendous 3D effect, like a tiny insect viewing a massive object.
+
+You can also use 3D transforms without perspective, either by setting perspective: none or not setting perspective at all. Without perspective, parallel planes are orthogonal and have no vanishing point.
+
+By default, the vanishing point for a 3D space is positioned at the center. You can change the position of the vanishing point with perspective-origin property. */
+/*# sourceMappingURL=styles.css.map */
